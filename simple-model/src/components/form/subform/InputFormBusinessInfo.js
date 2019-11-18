@@ -1,30 +1,27 @@
-import React, { Fragment, Component } from "react";
+import React, { useState, Fragment } from "react";
 //import { formatPercentage } from '../helpers';
 
-class InputFormBusinessInfo extends Component {
-  businessNameRef = React.createRef();
-  businessIDCINRef = React.createRef();
-  ownerNameRef = React.createRef();
-  ownerEmailRef = React.createRef();
-  ownerMobileRef = React.createRef();
-  retailWholesaleRef = React.createRef();
-  sectorDropDownRef = React.createRef();
-  sectorCodeRef = React.createRef();
-  stateDropDownRef = React.createRef();
-  annualRevenuesRef = React.createRef();
-  ownerMobileRef = React.createRef();
-  annualGrowthRateAvailableRef = React.createRef();
-  annualGrowthRateRef = React.createRef();
-  annualProfitMarginRef = React.createRef();
-  annualProfitOverwriteRef = React.createRef();
-  totalExistingLongTermDebtRef = React.createRef();
-  totalExistingWorkingCapitalRef = React.createRef();
-  averageAnnualInterestRateRef = React.createRef();
-  totalAnnualInterestRef = React.createRef();
+const InputFormBusinessInfo = (props) => {
+  // businessName//ref = React.create//ref();
+  // businessIDCIN//ref = React.create//ref();
+  // ownerName//ref = React.create//ref();
+  // ownerEmail//ref = React.create//ref();
+  // ownerMobile//ref = React.create//ref();
+  // retailWholesale//ref = React.create//ref();
+  // sectorDropDown//ref = React.create//ref();
+  // sectorCode//ref = React.create//ref();
+  // stateDropDown//ref = React.create//ref();
+  // annualRevenues//ref = React.create//ref();
+  // ownerMobile//ref = React.create//ref();
+  // annualGrowthRateAvailable//ref = React.create//ref();
+  // annualGrowthRate//ref = React.create//ref();
+  // annualProfitMargin//ref = React.create//ref();
+  // annualProfitOverwrite//ref = React.create//ref();
+  // totalExistingLongTermDebt//ref = React.create//ref();
+  // totalExistingWorkingCapital//ref = React.create//ref();
+  // averageAnnualInterestRate//ref = React.create//ref();
+  // totalAnnualInterest//ref = React.create//ref();
 
-  async componentDidMount() {
-    
-  }  
 
   // businessInfo = {
   //   businessName: this.businessName.value.value,
@@ -48,7 +45,6 @@ class InputFormBusinessInfo extends Component {
   //   totalAnnualInterest: this.totalAnnualInterest.value.value
   // };
 
-  render() {
     return (
       <Fragment>
         <div className="form-group row">
@@ -59,7 +55,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.businessName}
+              ////ref={this.businessName}
               placeholder="Business Name"
               required
             />
@@ -73,7 +69,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.businessIDCIN}
+              ////ref={this.businessIDCIN}
               placeholder="Business ID / CIN"
               required
             />
@@ -87,7 +83,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.ownerName}
+              ////ref={this.ownerName}
               placeholder="Owner Name"
               required
             />
@@ -101,7 +97,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="email"
               className="form-control"
-              ref={this.ownerEmail}
+              ////ref={this.ownerEmail}
               placeholder="Owner Email"
               required
             />
@@ -115,7 +111,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.ownerMobile}
+              ////ref={this.ownerMobile}
               placeholder="Owner Mobile"
               required
             />
@@ -129,7 +125,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.retailWholesale}
+              ////ref={this.retailWholesale}
               placeholder="Retail / Wholesale"
               required
             />
@@ -142,12 +138,12 @@ class InputFormBusinessInfo extends Component {
           <div className="col-sm-9">
             <select
               className="form-control"
-              ref={this.sectorDropDown}  
-              onChange={this.props.updateSectorCode}            
+              ////ref={this.sectorDropDown}  
+              onChange={props.updateSectorCode}            
             >
               <option defaultValue>Choose a Sector</option>
-              {Object.keys(this.props.sectorData).map((key, value) => (
-               <option key={key} value={value}>{this.props.sectorData[key]}</option> 
+              {Object.keys(props.sectorData).map((key, value) => (
+               <option key={key} value={value}>{props.sectorData[key]}</option> 
               ))}              
             </select>
           </div>
@@ -160,7 +156,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.sectorCode}
+              //ref={this.sectorCode}
               onChange="findBenchmarking()"
               placeholder="Sector Code"
               readOnly
@@ -172,10 +168,12 @@ class InputFormBusinessInfo extends Component {
             Zone
           </label>
           <div className="col-sm-9">
-            <select className="form-control" ref={this.zoneDropDown}>
+            <select className="form-control" 
+            //ref={this.zoneDropDown}
+            >
               <option defaultValue>Choose a Zone</option>
-              {this.props.zoneData.map((zone, id) =>
-              <option key={id} value={zone}>{zone}</option>)};          
+              {props.zoneData.map((zoneData, id) =>
+              <option key={id} value={zoneData}>{zoneData}</option>)};          
             </select>
           </div>
         </div>
@@ -186,7 +184,7 @@ class InputFormBusinessInfo extends Component {
           <div className="col-sm-9">
             <select
               className="form-control"
-              ref={this.stateDropDown}
+              //ref={this.stateDropDown}
               onChange="findBenchmarking()"
             >
             <option defaultValue>Choose a Location / State</option>
@@ -202,7 +200,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.lastestYear}
+              //ref={this.lastestYear}
               placeholder="Lastest Year"
               min="1900"
               max="2080"
@@ -218,7 +216,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.annualRevenues}
+              //ref={this.annualRevenues}
               placeholder="Annual Revenues"
               onchange="calculateAnnualProfitOverwrite()"
               required
@@ -233,7 +231,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.ownerMobile}
+              //ref={this.ownerMobile}
               placeholder="Owner Mobile"
               required
             />
@@ -249,7 +247,7 @@ class InputFormBusinessInfo extends Component {
           <div className="col-sm-9">
             <select
               className="form-control"
-              ref={this.annualGrowthRateAvailable}
+              //ref={this.annualGrowthRateAvailable}
             >
               <option defaultValue>Yes</option>
               <option>No</option>
@@ -264,7 +262,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.annualGrowthRate}
+              //ref={this.annualGrowthRate}
               placeholder="Annual Growth Rate"
               pattern="^[0-9]{1,2}((,|\.)[0-9]{1,10})?%?$"
               onfocusout="percentage()"
@@ -283,7 +281,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.annualProfitMargin}
+              //ref={this.annualProfitMargin}
               placeholder="Annual Profit Margin"
               pattern="^[0-9]{1,2}((,|\.)[0-9]{1,10})?%?$"
               onfocusout="percentage()"
@@ -303,7 +301,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.annualProfitOverwrite}
+              //ref={this.annualProfitOverwrite}
               placeholder="Annual Profit (overwrite if available)"
               readOnly
             />
@@ -320,7 +318,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.totalExistingLongTermDebt}
+              //ref={this.totalExistingLongTermDebt}
               placeholder="Total Existing Long Term Debt"
               onchange="calculateTotalAnnualInterest()"
               required
@@ -338,7 +336,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="number"
               className="form-control"
-              ref={this.totalExistingWorkingCapital}
+              //ref={this.totalExistingWorkingCapital}
               placeholder="Total Existing Working Capital"
               onchange="calculateTotalAnnualInterest()"
               required
@@ -356,7 +354,7 @@ class InputFormBusinessInfo extends Component {
             <input
               type="text"
               className="form-control"
-              ref={this.averageAnnualInterestRate}
+              //ref={this.averageAnnualInterestRate}
               placeholder="Average Annual Interest Rate"
               pattern="^[0-9]{1,2}((,|\.)[0-9]{1,10})?%?$"
               onchange="calculateTotalAnnualInterest()"
@@ -377,7 +375,7 @@ class InputFormBusinessInfo extends Component {
               <input
                 type="text"
                 className="form-control"
-                ref={this.totalAnnualInterest}
+                //ref={this.totalAnnualInterest}
                 placeholder="Total Annual Interest (overwrite if available)"
                 required
               />
@@ -386,7 +384,6 @@ class InputFormBusinessInfo extends Component {
         </div>
       </Fragment>
     );
-  }
 }
 
 export default InputFormBusinessInfo;

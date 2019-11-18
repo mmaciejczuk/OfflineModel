@@ -1,93 +1,101 @@
-import React, { Component } from "react";
-import OfflineModelProvider from "../main/OfflineModelProvider";
+import React, { useState, useEffect } from "react";
 import Header from "../header/Header";
 import InputForm from "../form/InputForm";
 
-class App extends Component {
-  state = {
-    loading: true,
-    sectorsMap: [],
-    zones: [],
-    states: [],
-    code: null
-  };
+const App = props => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [sectorsMap, setSectorsMap] = useState({});
+  const [zones, setZones] = useState([]);
+  const [states, setStates] = useState({});
+  const [code, setCode] = useState({});
 
-  componentDidMount() {
-    this.getSectorsMap();
-    this.getZones();
-    this.getStatesForZone("South India Zone");
-  }
-
-  updateSectorCodeState() {
-    //this.setState({code:})
-  }
-
-  getSectorsMap() {
+  const getSectorsMap = () => {
     const url =
       "https://ce-creditapi-dev.azurewebsites.net/api/SectorMap/GetSectors";
 
     fetch(url)
-      .then(res => res.json())
+      .then(response => {
+        if (!response.ok){
+          throw new Error('Could not fetch Sectors Map.');
+        }
+        return response.json();
+      })
       .then(json => {
-        this.setState({
-          loading: false,
-          sectorsMap: json
-        });
+        setIsLoading(false);
+        setSectorsMap(json);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
       });
-  }
+  };
 
-  getZones() {
+  const getZones = () => {
     const url =
       "https://ce-creditapi-dev.azurewebsites.net/api/SectorMap/GetZone";
 
-    fetch(url)
-      .then(res => res.json())
+      fetch(url)
+      .then(response => {
+        if (!response.ok){
+          throw new Error('Could not fetch Zones.');
+        }
+        return response.json();
+      })
       .then(json => {
-        this.setState({
-          loading: false,
-          zones: json
-        });
+        setIsLoading(false);
+        setZones(json);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
       });
-  }
+  };
 
-  getStatesForZone(zone) {
+  const getStatesForZone = zone => {
     const url = `https://ce-creditapi-dev.azurewebsites.net/api/SectorMap/GetState?zone=${zone}`;
 
     fetch(url)
-      .then(res => res.json())
+      .then(response => {
+        if (!response.ok){
+          throw new Error('Could not fetch States.');
+        }
+        return response.json();
+      })
       .then(json => {
-        this.setState({
-          loading: false,
-          states: json
-        });
+        setIsLoading(false);
+        setStates(json);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
       });
-  }
+  };
 
-  render() {
-    var { loading, sectorsMap } = this.state;
+  useEffect(() => {
+    getSectorsMap();
+    getZones();
+    getStatesForZone("South India Zone");
+  }, []);
 
-    if (loading) {
-      return <div>loading...</div>;
-    }
-    if (!sectorsMap) {
-      return <div>something goes wrong...</div>;
-    }
+  let content = <div>Loading data...</div>;
 
+  if (!isLoading && sectorsMap && zones) {
     return (
-      <OfflineModelProvider>
-        <div className="container">
-          <div className="p-3 mb-2 bg-primary text-white">
-            <Header />
-          </div>
-          <InputForm
-            // sectorData={this.state.sectorsMap}
-            // zoneData={this.state.zones}
-            // updateSectorCodeState={this.updateSectorCode}
-          />
+      <div className="container">
+        <div className="p-3 mb-2 bg-primary text-white">
+          <Header />
         </div>
-      </OfflineModelProvider>
+        <InputForm
+          sectorData={sectorsMap}
+          zoneData={zones}
+        />
+      </div>
     );
+  } else if (isLoading && !sectorsMap && !zones) {
+    content = <div>Failed to fetch data...</div>;
   }
-}
+
+  return content;
+};
 
 export default App;
