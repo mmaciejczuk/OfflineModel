@@ -45,6 +45,13 @@ const InputFormBusinessInfo = (props) => {
   //   totalAnnualInterest: this.totalAnnualInterest.value.value
   // };
 
+  const [selectedZone, ] = useState({});
+
+  // useEffect(() => {
+  //   console.log("Fetching data...");
+
+  // })
+
     return (
       <Fragment>
         <div className="form-group row">
@@ -218,7 +225,7 @@ const InputFormBusinessInfo = (props) => {
               className="form-control"
               //ref={this.annualRevenues}
               placeholder="Annual Revenues"
-              onchange="calculateAnnualProfitOverwrite()"
+              onChange="calculateAnnualProfitOverwrite()"
               required
             />
           </div>
@@ -285,7 +292,7 @@ const InputFormBusinessInfo = (props) => {
               placeholder="Annual Profit Margin"
               pattern="^[0-9]{1,2}((,|\.)[0-9]{1,10})?%?$"
               onfocusout="percentage()"
-              onchange="calculateAnnualProfitOverwrite()"
+              onChange="calculateAnnualProfitOverwrite()"
               required
             />
           </div>
@@ -320,7 +327,7 @@ const InputFormBusinessInfo = (props) => {
               className="form-control"
               //ref={this.totalExistingLongTermDebt}
               placeholder="Total Existing Long Term Debt"
-              onchange="calculateTotalAnnualInterest()"
+              onChange="calculateTotalAnnualInterest()"
               required
             />
           </div>
@@ -338,7 +345,7 @@ const InputFormBusinessInfo = (props) => {
               className="form-control"
               //ref={this.totalExistingWorkingCapital}
               placeholder="Total Existing Working Capital"
-              onchange="calculateTotalAnnualInterest()"
+              onChange="calculateTotalAnnualInterest()"
               required
             />
           </div>
@@ -357,7 +364,7 @@ const InputFormBusinessInfo = (props) => {
               //ref={this.averageAnnualInterestRate}
               placeholder="Average Annual Interest Rate"
               pattern="^[0-9]{1,2}((,|\.)[0-9]{1,10})?%?$"
-              onchange="calculateTotalAnnualInterest()"
+              onChange="calculateTotalAnnualInterest()"
               onfocusout="percentage()"
               required
             />
