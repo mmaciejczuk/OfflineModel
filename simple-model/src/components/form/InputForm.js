@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SubHeader from "../header/SubHeader";
 import InputFormBusinessInfo from "./subform/InputFormBusinessInfo";
 import InputFormLenderParams from "./subform/InputFormLenderParams";

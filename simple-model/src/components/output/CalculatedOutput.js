@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class CalculatedOutput extends Component {
-    render() {
-        return (
-            <div>
-                Output
-            </div>
-        );
-    }
-}
+const CalculatedOutput = props => {
+  return <div>Output</div>;
+};
 
 export default CalculatedOutput;

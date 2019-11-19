@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class CalculatedOutputTenure extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
-    }
-}
+const CalculatedOutputTenure = props => {
+  return <div></div>;
+};
 
 export default CalculatedOutputTenure;
